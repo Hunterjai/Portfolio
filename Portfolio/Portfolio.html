@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Natwara Phongsap — Portfolio 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700;800&family=Noto+Sans+Thai:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#04080F;--bg2:#071018;--bg3:#0A1628;--bg4:#0D1F38;
+  --blue:#0F52A8;--blue2:#1A6CC8;
+  --cyan:#00C8F0;--cyan2:#00FFCC;
+  --gold:#F5C430;--gold2:#FFE082;
+  --red:#FF4060;
+  --white:#E8EEF8;--muted:#5A7090;--muted2:#8A9AB8;
+  --W:1280px;--H:720px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  background:#06090F;
+  font-family:'Noto Sans Thai','Oxanium',sans-serif;
+  color:var(--white);
+  display:flex;flex-direction:column;align-items:center;
+  padding:36px 16px 60px;gap:28px;
+}
+
+/* ── TOPBAR ── */
+.bar{
+  position:sticky;top:12px;z-index:200;
+  display:flex;align-items:center;gap:14px;
+  background:rgba(4,8,15,0.85);
+  border:1px solid rgba(0,200,240,0.18);
+  border-radius:6px;padding:9px 22px;
+  backdrop-filter:blur(16px);
+  font-family:'JetBrains Mono',monospace;font-size:12px;
+  color:var(--cyan);letter-spacing:.04em;
+}
+.bar span{color:var(--muted);}
+.bar strong{color:var(--white);}
+.bar .dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);opacity:.6;}
+.xbtn{
+  background:linear-gradient(135deg,var(--cyan),var(--cyan2));
+  color:#000;border:none;padding:5px 14px;border-radius:4px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;
+  cursor:pointer;letter-spacing:.06em;margin-left:6px;
+}
+.xbtn:hover{opacity:.85;}
+
+/* ── SLIDE ── */
+.slide{
+  width:var(--W);height:var(--H);
+  position:relative;overflow:hidden;flex-shrink:0;
+  box-shadow:0 0 0 1px rgba(0,200,240,0.12),0 24px 70px rgba(0,0,0,.7);
+}
+/* scanline */
+.slide::after{
+  content:'';position:absolute;inset:0;pointer-events:none;z-index:90;
+  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.08) 3px,rgba(0,0,0,.08) 4px);
+}
+/* slide number */
+.sn{
+  position:absolute;bottom:18px;right:26px;z-index:95;
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  color:rgba(0,200,240,.3);letter-spacing:.1em;
+}
+/* corners */
+.c{position:absolute;width:20px;height:20px;z-index:95;}
+.c.tl{top:14px;left:14px;border-top:1.5px solid var(--cyan);border-left:1.5px solid var(--cyan);}
+.c.tr{top:14px;right:14px;border-top:1.5px solid var(--cyan);border-right:1.5px solid var(--cyan);}
+.c.bl{bottom:14px;left:14px;border-bottom:1.5px solid var(--cyan);border-left:1.5px solid var(--cyan);}
+.c.br{bottom:14px;right:14px;border-bottom:1.5px solid var(--cyan);border-right:1.5px solid var(--cyan);}
+
+/* ── IMAGE PLACEHOLDER ── */
+.ph{
+  background:linear-gradient(135deg,#071220,#0A1E30);
+  border:1.5px dashed rgba(0,200,240,.3);
+  border-radius:6px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:6px;cursor:pointer;transition:.2s;
+  position:relative;overflow:hidden;
+}
+.ph:hover{border-color:var(--cyan);background:rgba(0,200,240,.04);}
+.ph::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(45deg,transparent,transparent 10px,rgba(0,200,240,.025) 10px,rgba(0,200,240,.025) 11px);
+}
+.ph img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:5px;}
+
+/* คลาสใหม่: ให้ภาพพอดีกรอบ ไม่ถูกตัด */
+.ph img.contain-img {
+  object-fit: contain;
+  padding: 4px; /* เผื่อขอบไว้เล็กน้อยให้ดูสวย */
+}
+
+/* ── CHIPS ── */
+.chip{font-family:'JetBrains Mono',monospace;font-size:10.5px;padding:3px 9px;border-radius:3px;display:inline-block;}
+.cc{background:rgba(0,200,240,.1);color:var(--cyan);border:1px solid rgba(0,200,240,.28);}
+.cg{background:rgba(0,255,180,.08);color:var(--cyan2);border:1px solid rgba(0,255,180,.22);}
+.cb{background:rgba(15,82,168,.2);color:#70AAFF;border:1px solid rgba(15,82,168,.4);}
+.cy{background:rgba(245,196,48,.1);color:var(--gold);border:1px solid rgba(245,196,48,.28);}
+.cr{background:rgba(255,64,96,.1);color:var(--red);border:1px solid rgba(255,64,96,.25);}
+
+/* shared section header */
+.sh{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  color:var(--cyan);letter-spacing:.18em;
+  display:flex;align-items:center;gap:8px;margin-bottom:14px;
+}
+.sh::after{content:'';flex:1;height:1px;background:linear-gradient(to right,rgba(0,200,240,.35),transparent);}
+
+/* shared bullet list */
+.bl{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.bl li{font-size:12.5px;color:rgba(210,220,235,.85);line-height:1.65;padding-left:16px;position:relative;}
+.bl li::before{content:'▸';position:absolute;left:0;color:var(--cyan);font-size:10px;top:3px;}
+.bl li strong{color:var(--white);}
+
+/* award pill */
+.aw{
+  display:inline-flex;align-items:center;gap:6px;
+  background:linear-gradient(135deg,rgba(245,196,48,.14),rgba(245,196,48,.04));
+  border:1px solid rgba(245,196,48,.45);border-radius:4px;
+  padding:4px 12px;font-family:'JetBrains Mono',monospace;font-size:10.5px;
+  color:var(--gold);
+}
+
+/* ════════════ SLIDE 1 — COVER ════════════ */
+#s1{background:radial-gradient(ellipse 90% 80% at 55% 50%,#091828 0%,#04080F 100%);}
+#s1 .grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,200,240,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,200,240,.05) 1px,transparent 1px);background-size:56px 56px;}
+#s1 .glow{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(0,200,240,.07) 0%,transparent 70%);top:50%;left:58%;transform:translate(-50%,-50%);}
+#s1 .left{position:absolute;left:72px;top:50%;transform:translateY(-50%);z-index:10;max-width:480px;}
+#s1 .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--cyan);letter-spacing:.22em;margin-bottom:14px;opacity:.8;}
+#s1 h1{font-family:'Oxanium',sans-serif;font-size:62px;font-weight:800;line-height:.95;color:var(--white);margin-bottom:8px;}
+#s1 h1 em{color:var(--cyan);font-style:normal;}
+#s1 .thname{font-family:'Noto Sans Thai',sans-serif;font-size:16px;color:rgba(0,200,240,.65);letter-spacing:.06em;margin-bottom:6px;}
+#s1 .role{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted2);letter-spacing:.05em;margin-bottom:28px;}
+#s1 .ctlist{display:flex;flex-direction:column;gap:7px;margin-bottom:28px;}
+#s1 .ct{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:rgba(200,215,235,.7);display:flex;align-items:center;gap:9px;}
+#s1 .ct .i{color:var(--cyan);width:13px;text-align:center;}
+#s1 .pills{display:flex;flex-wrap:wrap;gap:7px;}
+#s1 .right{position:absolute;right:72px;top:50%;transform:translateY(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:18px;}
+#s1 .aframe{width:220px;height:220px;border-radius:50%;border:2px solid var(--cyan);box-shadow:0 0 0 7px rgba(0,200,240,.08),0 0 36px rgba(0,200,240,.18);overflow:hidden;flex-shrink:0;position:relative;}
+#s1 .aframe .ph{border-radius:50%;border:none;width:100%;height:100%;}
+#s1 .stats{display:flex;gap:14px;}
+#s1 .st{text-align:center;background:rgba(255,255,255,.04);border:1px solid rgba(0,200,240,.14);border-radius:6px;padding:10px 16px;}
+#s1 .stn{font-family:'Oxanium',sans-serif;font-size:26px;font-weight:700;color:var(--cyan);line-height:1;}
+#s1 .stl{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.06em;margin-top:3px;}
+
+/* ════════════ SLIDE 2 — ABOUT ME ════════════ */
+#s2{background:linear-gradient(150deg,#05090F 0%,#091525 100%);}
+#s2 .topline{position:absolute;top:0;left:160px;right:160px;height:2.5px;background:linear-gradient(to right,transparent,var(--cyan),transparent);}
+#s2 .inner{position:absolute;inset:52px 64px;display:grid;grid-template-columns:0.9fr 1.1fr;gap:44px;align-items:center;}
+#s2 .bigname{font-family:'Oxanium',sans-serif;font-size:44px;font-weight:800;color:var(--white);line-height:.95;margin-bottom:4px;}
+#s2 .thsub{font-family:'Noto Sans Thai',sans-serif;font-size:16px;color:var(--muted2);margin-bottom:18px;}
+#s2 .bio{font-size:13px;line-height:1.85;color:rgba(200,215,235,.8);margin-bottom:14px;}
+#s2 .bio-en{font-size:11.5px;line-height:1.75;color:rgba(150,170,200,.55);margin-bottom:18px;font-family:'JetBrains Mono',monospace;}
+#s2 .chips{display:flex;flex-wrap:wrap;gap:6px;}
+#s2 .rcol{display:flex;flex-direction:column;gap:14px;}
+#s2 .photo{height:380px;border-radius:8px;}
+#s2 .irow{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;}
+#s2 .ic{background:rgba(255,255,255,.03);border:1px solid rgba(0,200,240,.1);border-radius:5px;padding:9px 12px;}
+#s2 .il{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--cyan);letter-spacing:.08em;margin-bottom:3px;}
+#s2 .iv{font-size:12.5px;color:var(--white);font-weight:500;}
+
+/* ════════════ SLIDE 3 — INTERNSHIP ════════════ */
+#s3{background:linear-gradient(140deg,#04080F 0%,#081420 100%);}
+#s3 .vbar{position:absolute;top:0;left:0;bottom:0;width:5px;background:linear-gradient(to bottom,var(--cyan),var(--blue),transparent);}
+#s3 .inner{position:absolute;inset:46px 58px 46px 76px;display:grid;grid-template-columns:0.9fr 1.1fr;gap:46px;align-items:start;}
+#s3 .jtitle{font-family:'Oxanium',sans-serif;font-size:30px;font-weight:700;color:var(--white);line-height:1.1;margin-bottom:4px;}
+#s3 .org{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--muted2);margin-bottom:14px;line-height:1.5;}
+#s3 .chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px;}
+#s3 .rcol{display:flex;flex-direction:column;gap:12px;}
+#s3 .imgmain{height:280px;border-radius:7px;}
+#s3 .irow{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+#s3 .imgsm{height:160px;border-radius:5px;}
+
+/* ════════════ SLIDE 4 — ECO QUEST ════════════ */
+#s4{background:linear-gradient(140deg,#030A10 0%,#07121E 100%);}
+#s4 .glow{position:absolute;width:560px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(0,255,180,.05) 0%,transparent 70%);top:50%;right:-40px;transform:translateY(-50%);}
+#s4 .inner{position:absolute;inset:46px 58px;display:grid;grid-template-columns:0.7fr 1.3fr;gap:40px;align-items:start;}
+#s4 .plabel{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--cyan2);letter-spacing:.2em;margin-bottom:8px;}
+#s4 h2{font-family:'Oxanium',sans-serif;font-size:54px;font-weight:800;color:var(--white);line-height:.92;margin-bottom:10px;}
+#s4 .chips{display:flex;flex-wrap:wrap;gap:5px;margin:10px 0 12px;}
+#s4 .desc{font-size:12.5px;line-height:1.75;color:rgba(200,215,235,.8);margin-bottom:14px;}
+#s4 .outs{display:flex;flex-direction:column;gap:9px;margin-bottom:14px;}
+#s4 .out{display:flex;align-items:flex-start;gap:10px;}
+#s4 .onum{font-family:'Oxanium',sans-serif;font-size:22px;font-weight:700;color:var(--cyan2);line-height:1;flex-shrink:0;min-width:46px;}
+#s4 .otxt{font-size:12px;color:rgba(200,215,235,.82);line-height:1.55;padding-top:3px;}
+#s4 .rcol{display:flex;flex-direction:column;gap:12px;}
+#s4 .imgmain{height:340px;border-radius:8px;}
+#s4 .irow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+#s4 .imgsm{height:140px;border-radius:5px;}
+
+/* ════════════ SLIDE 5 — 2D SHOP ════════════ */
+#s5{background:linear-gradient(140deg,#060B16 0%,#0A1528 100%);}
+#s5 .inner{position:absolute;inset:46px 58px;display:grid;grid-template-columns:0.85fr 1.15fr;gap:42px;align-items:start;}
+#s5 h2{font-family:'Oxanium',sans-serif;font-size:38px;font-weight:800;color:var(--white);line-height:1;margin-bottom:6px;}
+#s5 .sub{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted2);margin-bottom:12px;}
+#s5 .chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px;}
+#s5 .desc{font-size:12.5px;line-height:1.75;color:rgba(200,215,235,.8);margin-bottom:14px;}
+#s5 .rcol{display:flex;flex-direction:column;gap:12px;}
+#s5 .imgmain{height:320px;border-radius:8px;}
+#s5 .irow{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+#s5 .imgsm{height:180px;border-radius:5px;}
+
+/* ════════════ SLIDE 6 — SPACE SHOOTER ════════════ */
+#s6{background:linear-gradient(160deg,#03060E 0%,#060C1A 100%);}
+#s6 .stargrid{position:absolute;inset:0;background-image:radial-gradient(1px 1px at 10% 15%,rgba(255,255,255,.5) 0%,transparent 100%),radial-gradient(1px 1px at 30% 70%,rgba(255,255,255,.4) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 55% 25%,rgba(255,255,255,.6) 0%,transparent 100%),radial-gradient(1px 1px at 75% 60%,rgba(255,255,255,.35) 0%,transparent 100%),radial-gradient(1px 1px at 90% 40%,rgba(255,255,255,.45) 0%,transparent 100%),radial-gradient(1px 1px at 20% 45%,rgba(255,255,255,.3) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 65% 80%,rgba(255,255,255,.5) 0%,transparent 100%),radial-gradient(1px 1px at 45% 50%,rgba(255,255,255,.4) 0%,transparent 100%);}
+#s6 .inner{position:absolute;inset:46px 58px;display:grid;grid-template-columns:0.8fr 1.2fr;gap:42px;align-items:start;}
+#s6 .plabel{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--red);letter-spacing:.2em;margin-bottom:8px;}
+#s6 h2{font-family:'Oxanium',sans-serif;font-size:42px;font-weight:800;color:var(--white);line-height:1;margin-bottom:6px;}
+#s6 .sub{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted2);margin-bottom:14px;}
+#s6 .chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px;}
+#s6 .desc{font-size:12.5px;line-height:1.75;color:rgba(200,215,235,.8);margin-bottom:14px;}
+#s6 .rcol{display:flex;flex-direction:column;gap:12px;}
+#s6 .imgmain{height:320px;border-radius:8px;}
+#s6 .irow{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+#s6 .imgsm{height:180px;border-radius:5px;}
+
+/* ════════════ SLIDE 7 — ART WORK ════════════ */
+#s7art{background:linear-gradient(150deg,#050B14 0%,#09152A 100%);}
+#s7art .inner{position:absolute;inset:46px 58px;}
+#s7art .artgrid{display:grid;grid-template-columns:1fr 1fr;gap:36px;height:calc(100% - 44px);}
+#s7art .ph img{border-radius:6px;}
+
+/* ════════════ SLIDE 8 — ACHIEVEMENT ════════════ */
+#s8{background:radial-gradient(ellipse 80% 80% at 50% 50%,#0A1525 0%,#04080F 100%);}
+#s8 .glow{position:absolute;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(245,196,48,.06) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);}
+#s8 .inner{position:absolute;inset:52px 72px;display:grid;grid-template-columns:1.05fr 0.95fr;gap:60px;align-items:center;}
+#s8 .ltcol{text-align:center;}
+#s8 .trophy{font-size:72px;filter:drop-shadow(0 0 22px rgba(245,196,48,.5));display:block;margin-bottom:14px;}
+#s8 .atitle{font-family:'Oxanium',sans-serif;font-size:26px;font-weight:700;color:var(--gold);margin-bottom:8px;}
+#s8 .adesc{font-size:12.5px;color:rgba(200,215,235,.75);line-height:1.75;margin-bottom:18px;}
+#s8 .certrow{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+#s8 .certimg{height:160px;border-radius:5px;}
+#s8 .sgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px;}
+#s8 .sc{background:rgba(255,255,255,.035);border:1px solid rgba(0,200,240,.1);border-radius:7px;padding:14px;text-align:center;}
+#s8 .sc.g{border-color:rgba(245,196,48,.28);}
+#s8 .sn2{font-family:'Oxanium',sans-serif;font-size:34px;font-weight:700;color:var(--cyan);line-height:1;}
+#s8 .sc.g .sn2{color:var(--gold);}
+#s8 .sl{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);margin-top:4px;letter-spacing:.06em;}
+.skillblock{display:flex;flex-direction:column;gap:6px;}
+.skillrow{display:flex;align-items:center;gap:8px;}
+.skillname{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(200,215,235,.75);width:130px;flex-shrink:0;}
+.skilltrack{flex:1;height:4px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden;}
+.skillfill{height:100%;border-radius:2px;background:linear-gradient(to right,var(--cyan),var(--blue2));}
+
+@media print{
+  body{background:#000;padding:0;gap:0;}
+  .bar{display:none;}
+  .slide{page-break-after:always;box-shadow:none;}
+}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="dot"></div>
+  <span>Portfolio</span>
+  <strong>Natwara Phongsap</strong>
+  <span>·</span>
+  <span>8 Slides</span>
+  <span>·</span>
+  <span>กล่องประ = ช่องใส่รูป</span>
+  <button class="xbtn" onclick="window.print()">⬇ Export PDF</button>
+</div>
+
+<div class="slide" id="s1">
+  <div class="grid"></div><div class="glow"></div>
+  <div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div>
+  <div class="left">
+    <div class="eyebrow">◈ PORTFOLIO </div>
+    <h1>NATWARA<br>PHONGSAP</h1>
+    <div class="thname">ณัฐวรา พงษ์ทรัพย์</div>
+    <div class="role">Game Developer · Computer Science Multimedia · New Graduate</div>
+    <div class="ctlist">
+      <div class="ct"><span class="i">📞</span>095-047-6585</div>
+      <div class="ct"><span class="i">✉</span>hunterjaiv.1@gmail.com</div>
+      <div class="ct"><span class="i">🔗</span>github.com/Hunterjai</div>
+      <div class="ct"><span class="i">📍</span>Bangkok, Thailand</div>
+    </div>
+    <div class="pills">
+      <span class="chip cc">Unity 6</span><span class="chip cc">Godot</span>
+      <span class="chip cb">PHP · HTML · CSS</span>
+      <span class="chip cy">TOEIC 780</span><span class="chip cy">GPA 3.73</span>
+    </div>
+  </div>
+  <div class="right">
+    <div class="aframe">
+      <div class="ph" style="width:220px;height:220px;border-radius:50%;border:none;">
+        <img src="1.jpg" alt="Profile Photo">
+      </div>
+    </div>
+    <div class="stats">
+      <div class="st"><div class="stn">3.73</div><div class="stl">CGPA</div></div>
+      <div class="st"><div class="stn">780</div><div class="stl">TOEIC</div></div>
+      <div class="st"><div class="stn">4+</div><div class="stl">PROJECTS</div></div>
+    </div>
+  </div>
+  <div class="sn">01 / 08</div>
+</div>
+
+<div class="slide" id="s2">
+  <div class="topline"></div>
+  <div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div>
+  <div class="inner">
+    <div>
+      <div class="sh">ABOUT ME · เกี่ยวกับฉัน</div>
+      <div class="bigname" style="color:var(--white)">NATWARA<br>PHONGSAP</div>
+      <div class="thsub">ณัฐวรา พงษ์ทรัพย์ · Game Developer</div>
+      <p class="bio">บัณฑิตใหม่ สาขาวิทยาการคอมพิวเตอร์ (มัลติมีเดีย) มหาวิทยาลัยสวนดุสิต มีความหลงใหลในการพัฒนาเกมและระบบ Interactive มีประสบการณ์จริงทั้ง Unity, Godot และ Web Dev เชื่อในการพัฒนาตัวเองอย่างต่อเนื่อง พร้อมรับ Feedback เสมอ</p>
+      <p class="bio-en">CS graduate passionate about creating fun, meaningful game experiences. Skilled in Unity, Godot, PHP/HTML/CSS, Python. Award-winning project at AUCC 2026.</p>
+      <div class="chips">
+        <span class="chip cc">Unity 6 · C#</span>
+        <span class="chip cc">Godot · GDScript</span>
+        <span class="chip cb">PHP · HTML · CSS</span>
+        <span class="chip cb">JavaScript · Python</span>
+        <span class="chip cg">Blender · Aseprite</span>
+        <span class="chip cy">Git / GitHub</span>
+        <span class="chip cy">Figma · Photoshop</span>
+      </div>
+    </div>
+    <div class="rcol">
+      <div class="ph photo" style="height:380px;border-radius:8px;">
+        <img src="1.1.jpg" alt="Profile Photo" style="object-position: center 15%;">
+      </div>
+      <div class="irow">
+        <div class="ic"><div class="il">UNIVERSITY</div><div class="iv">Suan Dusit University</div></div>
+        <div class="ic"><div class="il">MAJOR</div><div class="iv">Computer Science Multimedia</div></div>
+        <div class="ic"><div class="il">GPA</div><div class="iv" style="color:var(--cyan);font-weight:700">3.73 / 4.00</div></div>
+        <div class="ic"><div class="il">TOEIC</div><div class="iv" style="color:var(--cyan);font-weight:700">780 / 990</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="sn">02 / 08</div>
+</div>
+
+<div class="slide" id="s3">
+  <div class="vbar"></div>
+  <div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div>
+  <div class="inner">
+    <div>
+      <div class="sh">INTERNSHIP · ประสบการณ์ฝึกงาน</div>
+      <div class="jtitle">Frontend &amp;<br>UI Developer Intern</div>
+      <div class="org">ศูนย์สนเทศแนะแนวการศึกษาและอาชีพ · มหาวิทยาลัยสวนดุสิต<br>พ.ย. 2568 – ก.พ. 2569 &nbsp;(4 เดือน)</div>
+      <div class="chips">
+        <span class="chip cb">PHP</span><span class="chip cb">HTML5</span><span class="chip cb">CSS3</span>
+        <span class="chip cc">JavaScript</span><span class="chip cg">UI/UX Design</span><span class="chip cy">Figma</span>
+      </div>
+      <div style="margin-bottom:10px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--cyan);letter-spacing:.08em;margin-bottom:5px;">งานที่ 1 — แบบฟอร์ม กยศ. (Student Loan Web Form)</div>
+        <ul class="bl" style="gap:5px;">
+          <li>พัฒนา Web Form แจ้งความประสงค์ขอกู้ยืม กยศ. ภาคเรียนที่ 1–3 ด้วย <strong>PHP + HTML/CSS</strong></li>
+          <li>ออกแบบ UI ให้ผู้ใช้กรอกข้อมูลได้ง่าย ลด Error และวาง Data Flow ระหว่าง Frontend–Backend</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--cyan);letter-spacing:.08em;margin-bottom:5px;">งานที่ 2 — ระบบบันทึกข้อมูลบริจาคเพื่อรับเครื่องราชอิสริยาภรณ์</div>
+        <ul class="bl" style="gap:5px;">
+          <li>สร้าง Admin Dashboard สำหรับบันทึกและค้นหาข้อมูลผู้บริจาค พร้อมระบบ Login ที่ปลอดภัย</li>
+          <li>จัดการข้อมูล 500+ records ด้วย zero data loss และลด Page Load Time <strong>15%</strong></li>
+        </ul>
+      </div>
+    </div>
+    <div class="rcol">
+      <div class="ph imgmain">
+        <img src="2.jpg" alt="Internship Work" class="contain-img">
+      </div>
+      <div class="irow">
+        <div class="ph imgsm"><img src="3.png" alt="Internship Work" class="contain-img"></div>
+        <div class="ph imgsm"><img src="4.jpg" alt="Internship Work" class="contain-img"></div>
+      </div>
+    </div>
+  </div>
+  <div class="sn">03 / 08</div>
+</div>
+
+<div class="slide" id="s4">
+  <div class="glow"></div>
+  <div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div>
+  <div class="inner">
+    <div>
+      <div class="plabel">◈ FINAL YEAR PROJECT · 2025</div>
+      <h2>ECO<br>QUEST</h2>
+      <div class="aw">🏆 AUCC 2026 — Very Good Award</div>
+      <div class="chips">
+        <span class="chip cc">Godot Engine</span><span class="chip cc">GDScript</span>
+        <span class="chip cg">AI · CNN</span><span class="chip cg">Real-time API</span>
+        <span class="chip cy">Level Design</span><span class="chip cy">Aseprite</span>
+      </div>
+      <p class="desc">เกม 2D Educational ที่ผสาน AI (CNN) สำหรับจำแนกประเภทขยะแบบ Real-time แสดงผลบน HUD ของผู้เล่น ได้รับรางวัลจาก AUCC 2026 จาก 20 โปรเจกต์ที่เข้าแข่งขัน <span style="color:rgba(0,255,180,.7);font-size:11.5px;">🎨 All 2D Sprites &amp; Assets drawn with Aseprite</span></p>
+      <div class="outs">
+        <div class="out"><div class="onum">85%</div><div class="otxt">CNN Accuracy ในการจำแนกประเภทขยะ Real-time</div></div>
+        <div class="out"><div class="onum">5</div><div class="otxt">Core Mechanics พัฒนาบน Godot Engine</div></div>
+        <div class="out"><div class="onum">50+</div><div class="otxt">Git Commits ตลอดการพัฒนา</div></div>
+      </div>
+    </div>
+    <div class="rcol">
+      <div class="ph imgmain">
+        <img src="5.png" alt="Eco Quest Gameplay" class="contain-img">
+      </div>
+      <div class="irow" style="grid-template-columns:repeat(3,1fr)">
+        <div class="ph imgsm"><img src="6.png" alt="Eco Quest Gameplay" class="contain-img"></div>
+        <div class="ph imgsm"><img src="7.png" alt="Eco Quest Gameplay" class="contain-img"></div>
+        <div class="ph imgsm"><img src="8.png" alt="Eco Quest Gameplay" class="contain-img"></div>
+      </div>
+    </div>
+  </div>
+  <div class="sn">04 / 08</div>
+</div>
+
+<div class="slide" id="s5">
+  <div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div>
+  <div class="inner">
+    <div>
+      <div class="sh">PERSONAL PROJECT · 2026</div>
+      <h2>2D SHOP<br>MANAGEMENT<br>SYSTEM</h2>
+      <div class="sub">Unity 6 · C# · Unity uGUI &nbsp;|&nbsp; UI Programmer &amp; Unity Developer</div>
+      <div class="chips">
+        <span class="chip cc">Unity 6</span><span class="chip cc">C#</span>
+        <span class="chip cb">uGUI</span><span class="chip cb">Canvas Scaler</span>
+        <span class="chip cy">OOP Principles</span><span class="chip cy">Aseprite</span>
+      </div>
+      <p class="desc">ระบบร้านค้า In-Game แบบ Modular ด้วย Unity Grid Layout รองรับทุกขนาดหน้าจอ ออกแบบให้นำไปใช้ซ้ำในโปรเจกต์อื่นได้ทันที <span style="color:rgba(0,255,180,.7);font-size:11.5px;">🎨 All Sprites &amp; UI drawn with Aseprite</span></p>
+      <ul class="bl">
+        <li>Modular UI ด้วย Grid Layout + Canvas Scaler รองรับ 1080p และ Mobile ทุกขนาด</li>
+        <li>ระบบซื้อ-ขาย พร้อม Inventory Tracking &amp; Dynamic Economy States</li>
+        <li>ลด Code Redundancy <strong>30%</strong> ด้วย OOP และ Reusable C# Modules</li>
+        <li>Dynamic Button States สำหรับ User Feedback ที่ชัดเจน</li>
+      </ul>
+    </div>
+    <div class="rcol">
+      <div class="ph imgmain">
+        <img src="9.png" alt="2D Shop System" class="contain-img">
+      </div>
+      <div class="irow">
+        <div class="ph imgsm"><img src="10.png" alt="2D Shop System" class="contain-img"></div>
+        <div class="ph imgsm"><img src="11.png" alt="2D Shop System" class="contain-img"></div>
+      </div>
+    </div>
+  </div>
+  <div class="sn">05 / 08</div>
+</div>
+
+<div class="slide" id="s6">
+  <div class="stargrid"></div>
+  <div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div>
+  <div class="inner">
+    <div>
+      <div class="plabel">◈ PERSONAL PROJECT · 2023</div>
+      <h2>SPACE<br>SHOOTER<br>SHOWDOWN</h2>
+      <div class="sub">GameMaker 8.1 &nbsp;|&nbsp; Solo Developer</div>
+      <div class="chips">
+        <span class="chip cr">GameMaker 8.1</span>
+        <span class="chip cr">GML Script</span>
+        <span class="chip cb">Enemy AI</span>
+        <span class="chip cy">Aseprite</span>
+        <span class="chip cy">State Machine</span>
+      </div>
+      <p class="desc" style="margin-top:10px">เกม 2D Space Shooter แบบ Arcade ที่พัฒนาคนเดียวตั้งแต่ Game Logic จนถึง Visual Assets เน้น Responsive Controls และ Enemy AI ที่ท้าทายผู้เล่น <span style="color:rgba(0,255,180,.7);font-size:11.5px;">🎨 All Sprites drawn with Aseprite</span></p>
+      <ul class="bl">
+        <li>ออกแบบระบบยิงและการหลบ พร้อม Dynamic Enemy AI <strong>3 รูปแบบ</strong></li>
+        <li>ระบบ Scoring &amp; Progression ด้วย State Management ติดตาม High Score</li>
+        <li>วาด Sprite, Character และ Background Assets <strong>ทั้งหมดด้วย Aseprite</strong> ด้วยตัวเอง</li>
+        <li>Design &amp; integrate Sound Effects สร้างประสบการณ์ Retro Arcade แบบครบวงจร</li>
+      </ul>
+    </div>
+    <div class="rcol">
+      <div class="ph imgmain">
+        <img src="12.png" alt="Space Shooter — Gameplay" class="contain-img">
+      </div>
+      <div class="irow">
+        <div class="ph imgsm"><img src="13.png" alt="Enemy AI" class="contain-img"></div>
+        <div class="ph imgsm"><img src="14.png" alt="Score Screen" class="contain-img"></div>
+      </div>
+    </div>
+  </div>
+  <div class="sn">06 / 08</div>
+</div>
+
+<div class="slide" id="s7art">
+  <div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div>
+  <div style="position:absolute;top:0;right:0;width:3px;height:100%;background:linear-gradient(to bottom,var(--cyan2),transparent);"></div>
+  <div class="inner">
+    <div class="sh" style="margin-bottom:20px">ART WORK · ผลงานศิลปะ</div>
+    <div class="artgrid">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+          <div style="font-family:'Oxanium',sans-serif;font-size:22px;font-weight:700;color:var(--white);">2D Pixel Art</div>
+          <span class="chip cy" style="font-size:10px;">Aseprite</span>
+        </div>
+        <p style="font-size:12px;color:rgba(200,215,235,.65);margin-bottom:14px;line-height:1.6;">วาด Sprite, Character, Background และ UI Assets ทั้งหมดด้วย Aseprite สำหรับทุกโปรเจกต์เกม ตั้งแต่ Enemy AI Characters จนถึง HUD Icons</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px;">
+          <div class="ph" style="height:120px;border-radius:6px;"><img src="15.png" alt="Character Sprite" class="contain-img"></div>
+          <div class="ph" style="height:120px;border-radius:6px;"><img src="16.png" alt="Enemy AI Sprite" class="contain-img"></div>
+          <div class="ph" style="height:120px;border-radius:6px;"><img src="17.png" alt="UI / HUD Icons" class="contain-img"></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;">
+          <div class="ph" style="height:120px;border-radius:6px;"><img src="18.png" alt="Background / Tileset" class="contain-img"></div>
+          <div class="ph" style="height:120px;border-radius:6px;"><img src="19.png" alt="Animation Frames" class="contain-img"></div>
+        </div>
+      </div>
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+          <div style="font-family:'Oxanium',sans-serif;font-size:22px;font-weight:700;color:var(--white);">3D Art</div>
+          <span class="chip cg" style="font-size:10px;">Blender</span>
+        </div>
+        <p style="font-size:12px;color:rgba(200,215,235,.65);margin-bottom:14px;line-height:1.6;">ฝึกสร้าง 3D Model, Texturing และ Rendering ด้วย Blender เพื่อเพิ่มพูนทักษะด้าน 3D Art ยังอยู่ในระหว่างพัฒนาฝีมืออย่างต่อเนื่อง</p>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:10px;">
+          <div class="ph" style="height:150px;border-radius:6px;"><img src="20.png" alt="3D Model" class="contain-img"></div>
+          <div class="ph" style="height:150px;border-radius:6px;"><img src="21.png" alt="Render / Scene" class="contain-img"></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+          <div class="ph" style="height:100px;border-radius:5px;"><img src="22.png" alt="Texture Work" class="contain-img"></div>
+          <div class="ph" style="height:100px;border-radius:5px;"><img src="23.png" alt="Character 3D" class="contain-img"></div>
+          <div class="ph" style="height:100px;border-radius:5px;"><img src="24.jpg" alt="Props / Object" class="contain-img"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sn">07 / 08</div>
+</div>
+
+<div class="slide" id="s8">
+  <div class="glow"></div>
+  <div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div>
+  <div class="inner">
+    <div class="ltcol">
+      <span class="trophy">🏆</span>
+      <div class="atitle">"VERY GOOD" AWARD</div>
+      <p class="adesc">
+        การประชุมวิชาการระดับปริญญาตรีด้านคอมพิวเตอร์ภูมิภาคเอเชีย ครั้งที่ 14<br>
+        <strong style="color:var(--gold)">14th Asian Undergraduate Conference<br>on Computing (AUCC 2026)</strong><br>
+        <span style="font-size:11px;color:var(--muted2)">4–6 กุมภาพันธ์ 2569 · ม.ราชภัฏรำไพพรรณี<br>จากโปรเจกต์ที่เข้าร่วมแข่งขันทั้งหมด</span>
+      </p>
+      <div class="certrow">
+        <div class="ph certimg"><img src="25.png" alt="Certificate 1" class="contain-img"></div>
+        <div class="ph certimg"><img src="26.png" alt="Certificate 2" class="contain-img"></div>
+      </div>
+    </div>
+    <div>
+      <div class="sh" style="margin-bottom:18px">ACADEMIC STATS</div>
+      <div class="sgrid">
+        <div class="sc g"><div class="sn2" style="color:var(--gold)">3.73</div><div class="sl">CGPA / 4.00</div></div>
+        <div class="sc g"><div class="sn2" style="color:var(--gold)">780</div><div class="sl">TOEIC SCORE</div></div>
+        <div class="sc"><div class="sn2">4</div><div class="sl">MONTHS INTERN</div></div>
+        <div class="sc"><div class="sn2">4+</div><div class="sl">PROJECTS</div></div>
+      </div>
+      <div class="sh" style="margin-bottom:14px">SKILLS OVERVIEW</div>
+      <div class="skillblock">
+        <div class="skillrow"><span class="skillname">Unity 6 (C#)</span><div class="skilltrack"><div class="skillfill" style="width:85%"></div></div></div>
+        <div class="skillrow"><span class="skillname">Godot (GDScript)</span><div class="skilltrack"><div class="skillfill" style="width:80%"></div></div></div>
+        <div class="skillrow"><span class="skillname">PHP / HTML / CSS</span><div class="skilltrack"><div class="skillfill" style="width:75%"></div></div></div>
+        <div class="skillrow"><span class="skillname">Python</span><div class="skilltrack"><div class="skillfill" style="width:65%"></div></div></div>
+        <div class="skillrow"><span class="skillname">Blender / Figma</span><div class="skilltrack"><div class="skillfill" style="width:70%"></div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="sn">08 / 08</div>
+</div>
+
+</body>
+</html>
