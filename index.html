@@ -171,6 +171,17 @@ body{
 
 /* ════════════ SLIDE 6 — SPACE SHOOTER SHOWDOWN ════════════ */
 #s6{background:linear-gradient(160deg,#03060E 0%,#060C1A 100%);}
+#s6 .stargrid{
+  position:absolute;inset:0;
+  background-image:radial-gradient(1px 1px at 10% 15%,rgba(255,255,255,.5) 0%,transparent 100%),
+    radial-gradient(1px 1px at 30% 70%,rgba(255,255,255,.4) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 55% 25%,rgba(255,255,255,.6) 0%,transparent 100%),
+    radial-gradient(1px 1px at 75% 60%,rgba(255,255,255,.35) 0%,transparent 100%),
+    radial-gradient(1px 1px at 90% 40%,rgba(255,255,255,.45) 0%,transparent 100%),
+    radial-gradient(1px 1px at 20% 45%,rgba(255,255,255,.3) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 65% 80%,rgba(255,255,255,.5) 0%,transparent 100%),
+    radial-gradient(1px 1px at 45% 50%,rgba(255,255,255,.4) 0%,transparent 100%);
+}
 #s6 .inner{position:absolute;inset:46px 58px;display:grid;grid-template-columns:0.8fr 1.2fr;gap:42px;align-items:start;}
 #s6 .plabel{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--red);letter-spacing:.2em;margin-bottom:8px;}
 #s6 h2{font-family:'Oxanium',sans-serif;font-size:42px;font-weight:800;color:var(--white);line-height:1;margin-bottom:6px;}
@@ -190,6 +201,7 @@ body{
 
 /* ════════════ SLIDE 8 — ACHIEVEMENT ════════════ */
 #s8{background:radial-gradient(ellipse 80% 80% at 50% 50%,#0A1525 0%,#04080F 100%);}
+#s8 .glow{position:absolute;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(245,196,48,.06) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);}
 #s8 .inner{position:absolute;inset:52px 72px;display:grid;grid-template-columns:1.05fr 0.95fr;gap:60px;align-items:center;}
 #s8 .ltcol{text-align:center;}
 #s8 .trophy{font-size:72px;filter:drop-shadow(0 0 22px rgba(245,196,48,.5));display:block;margin-bottom:14px;}
@@ -268,7 +280,7 @@ body{
     <div class="eyebrow">◈ PORTFOLIO </div>
     <h1>NATWARA<br>PHONGSAP</h1>
     <div class="thname">ณัฐวรา พงษ์ทรัพย์</div>
-    <div class="role">Game Developer · Computer Science Multimedia · New Graduate</div>
+    <div class="role">Frontend & Game Developer · Computer Science Multimedia</div>
     <div class="ctlist">
       <div class="ct"><span class="i">📞</span>095-047-6585</div>
       <div class="ct"><span class="i">✉</span>hunterjaiv.1@gmail.com</div>
@@ -303,7 +315,7 @@ body{
     <div>
       <div class="sh">ABOUT ME · เกี่ยวกับฉัน</div>
       <div class="bigname" style="color:var(--white)">NATWARA<br>PHONGSAP</div>
-      <div class="thsub">ณัฐวรา พงษ์ทรัพย์ · Game Developer</div>
+      <div class="thsub">ณัฐวรา พงษ์ทรัพย์ · Frontend & Game Developer</div>
       <p class="bio">บัณฑิตใหม่ สาขาวิทยาการคอมพิวเตอร์ (มัลติมีเดีย) มหาวิทยาลัยสวนดุสิต มีความหลงใหลในการพัฒนาเกมและระบบ Interactive มีประสบการณ์จริงทั้ง Unity, Godot และ Web Dev เชื่อในการพัฒนาตัวเองอย่างต่อเนื่อง พร้อมรับ Feedback เสมอ</p>
       <p class="bio-en">CS graduate passionate about creating fun, meaningful game experiences. Skilled in Unity, Godot, PHP/HTML/CSS, Python. Award-winning project at AUCC 2026.</p>
       <div class="chips">
@@ -346,15 +358,15 @@ body{
       <div style="margin-bottom:10px;">
         <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--cyan);letter-spacing:.08em;margin-bottom:5px;">งานที่ 1 — แบบฟอร์ม กยศ. (Student Loan Web Form)</div>
         <ul class="bl" style="gap:5px;">
-          <li>พัฒนา Web Form แจ้งความประสงค์ขอกู้ยืม กยศ. ภาคเรียนที่ 1–3 ด้วย <strong>PHP + HTML/CSS</strong></li>
-          <li>ออกแบบ UI ให้ผู้ใช้กรอกข้อมูลได้ง่าย ลด Error และวาง Data Flow ระหว่าง Frontend–Backend</li>
+          <li>พัฒนา Web Form ด้วย <strong>PHP, HTML, CSS</strong> พร้อมวาง UX Flow และระบบ Form Validation</li>
+          <li>ช่วยลดข้อผิดพลาดจากผู้ใช้งาน (User Error) และเพิ่มประสิทธิภาพการทำงานได้ <strong>~20%</strong></li>
         </ul>
       </div>
       <div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--cyan);letter-spacing:.08em;margin-bottom:5px;">งานที่ 2 — ระบบบันทึกข้อมูลบริจาคเพื่อรับเครื่องราชอิสริยาภรณ์</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--cyan);letter-spacing:.08em;margin-bottom:5px;">งานที่ 2 — Admin Dashboard รับเครื่องราชอิสริยาภรณ์</div>
         <ul class="bl" style="gap:5px;">
-          <li>สร้าง Admin Dashboard สำหรับบันทึกและค้นหาข้อมูลผู้บริจาค พร้อมระบบ Login ที่ปลอดภัย</li>
-          <li>จัดการข้อมูล 500+ records ด้วย zero data loss และลด Page Load Time <strong>15%</strong></li>
+          <li>สร้างระบบหลังบ้านพร้อม Login และค้นหา จัดการข้อมูลกว่า 500+ รายการแบบ Zero Data Loss</li>
+          <li>ออกแบบโครงสร้างรับส่งข้อมูลด้วยหลัก <strong>OOP</strong> และลด Page Load Time ลงได้ <strong>15%</strong></li>
         </ul>
       </div>
     </div>
@@ -384,11 +396,10 @@ body{
         <span class="chip cg">AI · CNN</span><span class="chip cg">Real-time API</span>
         <span class="chip cy">Level Design</span><span class="chip cy">Aseprite</span>
       </div>
-      <p class="desc">เกม 2D Educational ที่ผสาน AI (CNN) สำหรับจำแนกประเภทขยะแบบ Real-time แสดงผลบน HUD ของผู้เล่น ได้รับรางวัลจาก AUCC 2026 จาก 20 โปรเจกต์ที่เข้าแข่งขัน <span style="color:rgba(0,255,180,.7);font-size:11.5px;">🎨 All 2D Sprites &amp; Assets drawn with Aseprite</span></p>
+      <p class="desc">พัฒนาเกมการศึกษาแนวคัดแยกขยะที่ผสานการทำงานของ AI รับหน้าที่ออกแบบระบบ Spatial UI และ HUD โดยนำหลัก Information Architecture มาช่วยลดความซับซ้อนให้ใช้งานง่าย พัฒนาระบบเชื่อมต่อ AI (CNN) เพื่อจำแนกขยะแบบ Real-time แสดงผลบนหน้าจอด้วยความแม่นยำ 85%+ นอกจากนี้ยังได้พอร์ตตัวเกมขึ้นสู่แพลตฟอร์มเว็บไซต์เพื่อให้ผู้ใช้งานสามารถทดลองเล่นได้ทันที จัดการเวอร์ชันโค้ดอย่างเป็นระบบด้วย Git (50+ Commits)</p>
       <div class="outs">
         <div class="out"><div class="onum">85%</div><div class="otxt">CNN Accuracy ในการจำแนกประเภทขยะ Real-time</div></div>
-        <div class="out"><div class="onum">5</div><div class="otxt">Core Mechanics พัฒนาบน Godot Engine</div></div>
-        <div class="out"><div class="onum">50+</div><div class="otxt">Git Commits ตลอดการพัฒนา</div></div>
+        <div class="out"><div class="onum">Web</div><div class="otxt">สามารถพอร์ตตัวเกมขึ้นเล่นบน Web Browser ได้ทันที</div></div>
       </div>
     </div>
     <div class="rcol">
@@ -417,12 +428,11 @@ body{
         <span class="chip cb">uGUI</span><span class="chip cb">Canvas Scaler</span>
         <span class="chip cy">OOP Principles</span><span class="chip cy">Aseprite</span>
       </div>
-      <p class="desc">ระบบร้านค้า In-Game แบบ Modular ด้วย Unity Grid Layout รองรับทุกขนาดหน้าจอ ออกแบบให้นำไปใช้ซ้ำในโปรเจกต์อื่นได้ทันที <span style="color:rgba(0,255,180,.7);font-size:11.5px;">🎨 All Sprites &amp; UI drawn with Aseprite</span></p>
+      <p class="desc">ออกแบบและพัฒนาระบบสถาปัตยกรรม UI แบบ Modular โดยใช้แนวคิดเดียวกับ CSS Grid/Flexbox ผ่านหน้าจอร้านค้าบน Unity 6 (C#) ใช้หลักการ OOP ในการออกแบบระบบไอเทม ช่วยลดความซ้ำซ้อนของโค้ด (Code Redundancy) ได้ถึง 30% สร้างโมดูลที่นำไปใช้ซ้ำได้ พร้อมออกแบบ Dynamic UI States สำหรับ Feedback ผู้ใช้งานที่ชัดเจน</p>
       <ul class="bl">
-        <li>Modular UI ด้วย Grid Layout + Canvas Scaler รองรับ 1080p และ Mobile ทุกขนาด</li>
+        <li>Modular UI ด้วย Grid Layout + Canvas Scaler รองรับ Mobile ทุกขนาด</li>
         <li>ระบบซื้อ-ขาย พร้อม Inventory Tracking &amp; Dynamic Economy States</li>
         <li>ลด Code Redundancy <strong>30%</strong> ด้วย OOP และ Reusable C# Modules</li>
-        <li>Dynamic Button States สำหรับ User Feedback ที่ชัดเจน</li>
       </ul>
     </div>
     <div class="rcol">
